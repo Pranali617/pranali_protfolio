@@ -48,3 +48,4 @@ View your app in AI Studio: https://ai.studio/apps/e4780bd0-bdad-4c3e-8977-16d1c
 - Add a custom domain if desired
 
 Your portfolio will be live at `https://your-project-name.vercel.app` with working contact form and AI assistant!
+# pranali_protfolio
