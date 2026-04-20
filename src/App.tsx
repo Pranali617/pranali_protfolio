@@ -230,6 +230,12 @@ export default function App() {
                     </div>
                     {bioData.contact.email}
                   </a>
+                  <a href={`tel:${bioData.contact.phone}`} className="group flex items-center gap-4 text-xl font-bold hover:text-brand transition-colors">
+                    <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center group-hover:bg-indigo-50 transition-colors">
+                      <MessageCircle className="w-6 h-6" />
+                    </div>
+                    {bioData.contact.phone}
+                  </a>
                   <div className="flex gap-4">
                     <a href={`https://github.com/${bioData.contact.github}`} target="_blank" rel="noopener noreferrer" className="w-12 h-12 rounded-full border border-gray-200 flex items-center justify-center hover:border-brand hover:bg-brand hover:text-white transition-all">
                       <Github className="w-6 h-6" />
@@ -244,7 +250,7 @@ export default function App() {
             <div className="pt-12 border-t border-gray-100 flex flex-col md:flex-row justify-between items-center gap-8">
               <div className="text-xl font-bold tracking-tight text-brand">{bioData.name}.</div>
               <div className="text-xs uppercase tracking-[0.4em] font-bold text-gray-400">
-                © 2026 {bioData.name}. Powered by Groq API
+                © 2026 {bioData.name}.
               </div>
             </div>
           </div>
@@ -332,6 +338,19 @@ function ProjectCard({ project, index }: ProjectCardProps) {
             </li>
           ))}
         </ul>
+        {project.results && (
+          <div className="mb-10">
+            <h4 className="text-lg font-bold mb-4 text-gray-900">Results & Impact</h4>
+            <ul className="space-y-3">
+              {project.results.map((result, idx) => (
+                <li key={idx} className="flex items-start gap-3 text-sm text-gray-700">
+                  <div className="w-2 h-2 bg-brand rounded-full mt-2 flex-shrink-0"></div>
+                  {result}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
         <a 
           href={project.github} 
           target="_blank" 
@@ -482,7 +501,7 @@ function ChatBot({ onClose }: { onClose: () => void }) {
         - Projects: ${JSON.stringify(bioData.projects)}
         - Experience: ${JSON.stringify(bioData.experience)}
 
-        Answer questions politely and professionally. If someone asks for contact info, provide ${bioData.contact.email}.
+        Answer questions politely and professionally. If someone asks for contact info, provide ${bioData.contact.email} and ${bioData.contact.phone}.
         Be concise and helpful. Don't mention you are an AI model unless asked.
       `;
 
